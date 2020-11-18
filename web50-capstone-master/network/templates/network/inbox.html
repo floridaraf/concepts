@@ -1,0 +1,74 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+
+{% block head %}
+
+<style>
+.items {
+    cursor: pointer;
+  }
+  
+  .read {
+    background-color: purple;
+
+  
+  }
+
+#compose-submit{
+    margin-top: 15px;
+    margin-bottom: 10px;
+   
+  }
+
+#email_info{
+  font-size: smaller;
+  
+}
+
+#emails-view{
+  max-width: 500px;
+}
+
+
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+    <div>
+    <h2 style='margin-bottom:30px;'>Inbox</h2>
+    <nav id="inbox_nav">
+    <button class="btn" id="load">Inbox</button>
+    <button class="btn " id="compose">Compose</button>
+    <button class="btn " id="sent">Sent</button>
+    <button class="btn " id="archived">Archived</button>
+    </nav>
+    <hr>
+
+    <div class="container-fluid" id="emails-view">
+    </div>
+
+    <div style="width:300px; margin-left: 20%;"id="compose-view">
+        <h3>New Message</h3>
+        <form id="compose-form">
+            
+            <div class="form-group">
+                To: <input type=hidden id="compose-recipients" class="form-control" name="recipients" required /><input id="compose-name" class="form-control" name="recipients" required />
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="compose-subject" name="subject" placeholder="Subject">
+            </div>
+            <textarea class="form-control" id="compose-body" name="body" placeholder="Body"></textarea>
+            <input type="submit" value="Send" class="btn btn-primary" id="compose-submit"/>
+        </form>
+    </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/inbox.js' %}"></script>
+    <script src="{% static 'network/index.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Roommater{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/solid.css" integrity="sha384-TN9eFVoW87zV3Q7PfVXNZFuCwsmMwkuOTOUsyESfMS9uwDTf7yrxXH78rsXT3xf0" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/fontawesome.css" integrity="sha384-PRy/NDAXVTUcXlWA3voA+JO/UMtzWgsYuwMxjuu6DfFPgzJpciUiPwgsvp48fl3p" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        {% block script %}
+        {% endblock %}
+    </head>
+    <body>
+
+        <div class="bd-sidebar border-bottom-0" id="sidebar-wrapper">
+            <label id="menulabel"for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle"/>
+          
+            <nav id="navbar_items">
+            <a id="website_title"href="#">Roommater</a>
+              <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li id="username_link" class="nav-item">
+                        <a class="nav-link" href="#"><strong>{{ user.username }}</strong></a>
+                    </li>
+                     <li class="nav-item" id="all_posts_block">
+                  <a class="nav-link" id="all_posts_link"href="{% url 'index' %}">All Posts</a>
+                </li>
+               
+                    <li class="nav-item" id="following_block">
+                        <a class="nav-link" id="following_link" href="{% url 'following' %}">Following</a>
+                    </li>
+                    <li class="nav-item" id="inbox">
+                        <a class="nav-link" href="{% url 'inbox'%}">Inbox</a>
+                    </li>   
+                    <li class="nav-item" id="logout_link">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                     
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+        
+        
+        <div class="container-fluid">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

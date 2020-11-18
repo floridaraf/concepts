@@ -1,0 +1,38 @@
+textarea {
+    min-height: 400px;
+  }
+  
+  .items {
+    cursor: pointer;
+  }
+  
+  .read {
+    background-color: purple;
+
+  
+  }
+
+#compose-submit{
+    margin-top: 15px;
+    margin-bottom: 10px;
+   
+  }
+
+#email_info{
+  font-size: smaller;
+  
+}
+
+#emails-view{
+  min-width: 500px;
+}
+
+.mailrow{
+  z-index:1;
+}
+.mailrow:hover{
+  
+  font-size: large;
+  box-shadow: -5px 0px 10px  grey;
+  z-index: 4;
+}
